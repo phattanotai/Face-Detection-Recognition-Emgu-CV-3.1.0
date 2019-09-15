@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            cascadeClassifier = new CascadeClassifier(Application.StartupPath + "/haarcascade_frontalface_default.xml");
+            cascadeClassifier = new CascadeClassifier(Application.StartupPath + "/haarcascade_frontalface_alt_tree.xml");
 
         }
 
@@ -99,10 +99,10 @@ namespace WindowsFormsApp1
                         File.AppendAllText(Application.StartupPath + "/Faces/Faces.txt", nameLabels.ToArray()[i - 1] + ",");
 
                     }
-                    //alertMessage.AppendText(alert + textName.Text + " Add Successfully\r\n");
+                    alertMessage.AppendText(alert + textName.Text + " Add Successfully\r\n");
                     imgCapture.Image = null;
                     textName.Text = null;
-
+                    
                 }
                 else
                 {
@@ -304,6 +304,7 @@ namespace WindowsFormsApp1
                     recognition.Enabled = true;
                     alertMessage.AppendText (alert + "หยุดการทำ Face Detection แล้ว\r\n");
                     imgCapture.Image = null;
+                    System.Threading.Thread.Sleep(2000);
                     LoadData();
                 }
                 else

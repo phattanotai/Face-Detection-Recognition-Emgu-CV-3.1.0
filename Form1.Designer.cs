@@ -103,9 +103,9 @@
             // start
             // 
             this.start.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.start.Location = new System.Drawing.Point(342, 489);
+            this.start.Location = new System.Drawing.Point(331, 489);
             this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(120, 32);
+            this.start.Size = new System.Drawing.Size(131, 32);
             this.start.TabIndex = 5;
             this.start.Text = "Start Camera";
             this.start.UseVisualStyleBackColor = true;
@@ -157,10 +157,10 @@
             this.cameraBox.FormattingEnabled = true;
             this.cameraBox.Items.AddRange(new object[] {
             "กล้อง Camera",
-            "กล้อง Samsung IP Camers"});
-            this.cameraBox.Location = new System.Drawing.Point(106, 496);
+            "กล้อง Samsung IP Camers QNO-6010RP"});
+            this.cameraBox.Location = new System.Drawing.Point(12, 496);
             this.cameraBox.Name = "cameraBox";
-            this.cameraBox.Size = new System.Drawing.Size(217, 21);
+            this.cameraBox.Size = new System.Drawing.Size(313, 21);
             this.cameraBox.TabIndex = 9;
             this.cameraBox.Text = "เลือกกล้อง";
             this.cameraBox.SelectedIndexChanged += new System.EventHandler(this.CameraBox_SelectedIndexChanged);
