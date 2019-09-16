@@ -39,20 +39,32 @@ namespace WindowsFormsApp1
         Boolean FaceDetectionStatus = false;
         Boolean FaceRecognitionStatus = false;
 
-        int imgBoxH = 900;
-        int imgBoxW = 650;
+        int imgBoxH ;
+        int imgBoxW ;
+        int frameH,frameW;
+
         public Form1()
         {
             InitializeComponent();
-            cascadeClassifier = new CascadeClassifier(Application.StartupPath + "/haarcascade_frontalface_default.xml");
-
+            cascadeClassifier = new CascadeClassifier(Application.StartupPath + "/haarcascade_frontalface_alt_tree.xml");
+            
         }
 
         private void streaming(object sender,System.EventArgs e)
         {
             Frame = _capture.QueryFrame().ToImage<Bgr, byte>();
-            var frame = Frame.Resize(imgBoxH, imgBoxW, Inter.Cubic);
-        
+            if(Frame.Height/4 <= 200 || Frame.Width/4 <=200)
+            {
+                frameH = imgBoxH;
+                frameW = imgBoxW;
+            }
+            else
+            {
+                frameH = Frame.Height / 4;
+                frameW = Frame.Width / 4;
+            }
+            var frame = Frame.Resize(imgBoxW, imgBoxH, Inter.Cubic);
+            
             imgFrame.Image = frame;
         }
 
@@ -67,9 +79,9 @@ namespace WindowsFormsApp1
                 else
                 {
                     Frame = _capture.QueryFrame().ToImage<Bgr, byte>();
-                    var frame = Frame.Resize(imgBoxH, imgBoxW, Inter.Cubic);
+                    var frame = Frame.Resize(frameW, frameH, Inter.Cubic);
                     grayFrame = frame.Convert<Gray, Byte>();
-                    var faces = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10, new Size(20, 20), Size.Empty);
+                    var faces = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10,  Size.Empty);
                     foreach (var f in faces)
                     {
                         FaceForSave = frame.Copy(f).Convert<Bgr, Byte>().Resize(150, 150, Inter.Cubic);
@@ -122,23 +134,25 @@ namespace WindowsFormsApp1
         {
             
             Frame = _capture.QueryFrame().ToImage<Bgr, byte>();
-            var frame = Frame.Resize(500, 500, Inter.Cubic);
+            var frame = Frame.Resize(frameW, frameH, Inter.Cubic);
+            alertMessage.Text = frameW+":"+frameH;
             grayFrame = frame.Convert<Gray, Byte>();
-            var faces = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10, new Size(20, 20), Size.Empty);
+            var faces = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10,  Size.Empty);
             foreach (var f in faces)
             {
                 frame.Draw(f, new Bgr(Color.Red), 2);
-                alertMessage.Text = alert + "ทำการ Face Detection แล้ว\r\n";
+                //alertMessage.Text = alert + "ทำการ Face Detection แล้ว\r\n";
             }
 
-            imgFrame.Image = frame;
-            
+            imgFrame.Image = frame.Resize(imgBoxW, imgBoxH, Inter.Cubic);
+
+
 
         }
         private void EigenFaceRecognition(object sender, EventArgs e)
         { 
             Frame = _capture.QueryFrame().ToImage<Bgr, byte>();
-            var frame = Frame.Resize(imgBoxH, imgBoxW, Inter.Cubic);
+            var frame = Frame.Resize(frameW, frameH, Inter.Cubic);
             grayFrame = frame.Convert<Gray, Byte>();
             var faces = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10, Size.Empty);
             foreach (var f in faces)
@@ -164,12 +178,12 @@ namespace WindowsFormsApp1
 
 
             }
-            imgFrame.Image = frame;
+            imgFrame.Image = frame.Resize(imgBoxW, imgBoxH, Inter.Cubic);
         }
         private void FisherFaceRecognition(object sender, EventArgs e)
         {
             Frame = _capture.QueryFrame().ToImage<Bgr, byte>();
-            var frame = Frame.Resize(imgBoxH, imgBoxW, Inter.Cubic);
+            var frame = Frame.Resize(frameW, frameH, Inter.Cubic);
             grayFrame = frame.Convert<Gray, Byte>();
             var faces = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10, Size.Empty);
             foreach (var f in faces)
@@ -195,12 +209,12 @@ namespace WindowsFormsApp1
             }
 
             
-            imgFrame.Image = frame;
+            imgFrame.Image = frame.Resize(imgBoxW, imgBoxH, Inter.Cubic);
         }
         private void LBPHFaceRecognition(object sender, EventArgs e)
         {
             Frame = _capture.QueryFrame().ToImage<Bgr, byte>();
-            var frame = Frame.Resize(imgBoxH, imgBoxW, Inter.Cubic);
+            var frame = Frame.Resize(frameW, frameH, Inter.Cubic);
             grayFrame = frame.Convert<Gray, Byte>();
             var faces = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10, Size.Empty);
             foreach(var f in faces)
@@ -224,7 +238,7 @@ namespace WindowsFormsApp1
                 alertMessage.Text = (alert + "เริ่มการ Face Recognition ด้วยวิธีการ " + RecognitionType.Text + " แล้ว \r\n" + "Distance " + result.Distance + "\r\n Faces " + faces.Length.ToString());
 
             }
-            imgFrame.Image = frame;
+            imgFrame.Image = frame.Resize(imgBoxW, imgBoxH, Inter.Cubic);
         }
         private void ConnentCamera()
         {
@@ -337,11 +351,10 @@ namespace WindowsFormsApp1
                     if (FaceRecognitionStatus) {
                         recognition.Text = "Face Recognition";
                         textName.Text = "";
-
-                            Application.Idle -= new EventHandler(EigenFaceRecognition);
-      
-                            Application.Idle -= new EventHandler(FisherFaceRecognition);
-                      Application.Idle -= new EventHandler(LBPHFaceRecognition);
+                        detection.Enabled = true;
+                        Application.Idle -= new EventHandler(EigenFaceRecognition);
+                        Application.Idle -= new EventHandler(FisherFaceRecognition);
+                        Application.Idle -= new EventHandler(LBPHFaceRecognition);
                     
                         RecognitionType.Text = "";
                     }
@@ -364,8 +377,8 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
+                            
                             recognition.Text = "Face Recognition";
-                            detection.Enabled = true;
                             FaceRecognitionStatus = !FaceRecognitionStatus;
                             MessageBox.Show("เลือกวิธีการ Recognition ก่อน");
                         }
@@ -389,10 +402,13 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadData();
-            //timer1.Tick += new EventHandler(Timer1_Tick);
+
             timer1.Start();
 
             timer2.Start();
+
+            imgBoxH = imgFrame.Height;
+            imgBoxW = imgFrame.Width;
         }
 
        

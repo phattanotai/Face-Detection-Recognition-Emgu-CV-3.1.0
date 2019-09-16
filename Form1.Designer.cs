@@ -76,9 +76,9 @@
             // imgFrame
             // 
             this.imgFrame.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.imgFrame.Location = new System.Drawing.Point(12, 63);
+            this.imgFrame.Location = new System.Drawing.Point(30, 63);
             this.imgFrame.Name = "imgFrame";
-            this.imgFrame.Size = new System.Drawing.Size(900, 650);
+            this.imgFrame.Size = new System.Drawing.Size(675, 450);
             this.imgFrame.TabIndex = 2;
             this.imgFrame.TabStop = false;
             // 
@@ -102,7 +102,7 @@
             // start
             // 
             this.start.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.start.Location = new System.Drawing.Point(776, 25);
+            this.start.Location = new System.Drawing.Point(574, 522);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(131, 32);
             this.start.TabIndex = 5;
@@ -142,7 +142,7 @@
             // 
             // recognition
             // 
-            this.recognition.Location = new System.Drawing.Point(241, 30);
+            this.recognition.Location = new System.Drawing.Point(182, 87);
             this.recognition.Name = "recognition";
             this.recognition.Size = new System.Drawing.Size(138, 32);
             this.recognition.TabIndex = 8;
@@ -157,7 +157,7 @@
             this.cameraBox.Items.AddRange(new object[] {
             "กล้อง Camera",
             "กล้อง Samsung IP Camers QNO-6010RP"});
-            this.cameraBox.Location = new System.Drawing.Point(457, 31);
+            this.cameraBox.Location = new System.Drawing.Point(255, 528);
             this.cameraBox.Name = "cameraBox";
             this.cameraBox.Size = new System.Drawing.Size(313, 26);
             this.cameraBox.TabIndex = 9;
@@ -171,9 +171,9 @@
             "EigenFaces",
             "FisherFaces",
             "LBPHFaces"});
-            this.RecognitionType.Location = new System.Drawing.Point(16, 35);
+            this.RecognitionType.Location = new System.Drawing.Point(57, 38);
             this.RecognitionType.Name = "RecognitionType";
-            this.RecognitionType.Size = new System.Drawing.Size(219, 24);
+            this.RecognitionType.Size = new System.Drawing.Size(263, 24);
             this.RecognitionType.TabIndex = 11;
             this.RecognitionType.Text = "เลือก Algorithm";
             // 
@@ -186,7 +186,7 @@
             this.groupBox1.Controls.Add(this.capture);
             this.groupBox1.Controls.Add(this.save);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(929, 25);
+            this.groupBox1.Location = new System.Drawing.Point(728, 53);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(385, 346);
             this.groupBox1.TabIndex = 12;
@@ -198,18 +198,18 @@
             this.groupBox2.Controls.Add(this.recognition);
             this.groupBox2.Controls.Add(this.RecognitionType);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(929, 377);
+            this.groupBox2.Location = new System.Drawing.Point(728, 405);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(385, 88);
+            this.groupBox2.Size = new System.Drawing.Size(385, 149);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "การรู้จำใบหน้า";
             // 
             // alertMessage
             // 
-            this.alertMessage.Location = new System.Drawing.Point(929, 471);
+            this.alertMessage.Location = new System.Drawing.Point(30, 569);
             this.alertMessage.Name = "alertMessage";
-            this.alertMessage.Size = new System.Drawing.Size(383, 160);
+            this.alertMessage.Size = new System.Drawing.Size(675, 137);
             this.alertMessage.TabIndex = 14;
             this.alertMessage.Text = "";
             // 
@@ -238,9 +238,9 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(929, 637);
+            this.groupBox3.Location = new System.Drawing.Point(728, 566);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(383, 76);
+            this.groupBox3.Size = new System.Drawing.Size(383, 140);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = " Monitor";
@@ -248,7 +248,7 @@
             // lblRAM
             // 
             this.lblRAM.AutoSize = true;
-            this.lblRAM.Location = new System.Drawing.Point(345, 51);
+            this.lblRAM.Location = new System.Drawing.Point(345, 89);
             this.lblRAM.Name = "lblRAM";
             this.lblRAM.Size = new System.Drawing.Size(16, 16);
             this.lblRAM.TabIndex = 5;
@@ -257,7 +257,7 @@
             // lblCPU
             // 
             this.lblCPU.AutoSize = true;
-            this.lblCPU.Location = new System.Drawing.Point(345, 18);
+            this.lblCPU.Location = new System.Drawing.Point(345, 45);
             this.lblCPU.Name = "lblCPU";
             this.lblCPU.Size = new System.Drawing.Size(16, 16);
             this.lblCPU.TabIndex = 4;
@@ -265,23 +265,23 @@
             // 
             // pbRAM
             // 
-            this.pbRAM.Location = new System.Drawing.Point(105, 51);
+            this.pbRAM.Location = new System.Drawing.Point(98, 81);
             this.pbRAM.Name = "pbRAM";
-            this.pbRAM.Size = new System.Drawing.Size(232, 10);
+            this.pbRAM.Size = new System.Drawing.Size(241, 24);
             this.pbRAM.TabIndex = 3;
             // 
             // pbCPU
             // 
-            this.pbCPU.Location = new System.Drawing.Point(107, 21);
+            this.pbCPU.Location = new System.Drawing.Point(96, 39);
             this.pbCPU.Name = "pbCPU";
-            this.pbCPU.Size = new System.Drawing.Size(232, 10);
+            this.pbCPU.Size = new System.Drawing.Size(243, 28);
             this.pbCPU.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 46);
+            this.label2.Location = new System.Drawing.Point(13, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 15);
             this.label2.TabIndex = 1;
@@ -291,7 +291,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 21);
+            this.label1.Location = new System.Drawing.Point(13, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 0;
@@ -306,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1327, 729);
+            this.ClientSize = new System.Drawing.Size(1147, 715);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.alertMessage);
             this.Controls.Add(this.groupBox2);
@@ -317,7 +317,6 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "Form1";
             this.Text = "Face Detection";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCapture)).EndInit();
